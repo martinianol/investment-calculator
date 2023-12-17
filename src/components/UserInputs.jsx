@@ -8,17 +8,7 @@ const INITIAL_VALUES = {
   duration: 0,
 };
 
-const UserInputs = () => {
-  const [values, setValues] = useState(INITIAL_VALUES);
-
-  const handleChange = (id, value) => {
-    setValues((prevState) => {
-      const newValues = { ...prevState };
-      newValues[id] = value;
-      return newValues;
-    });
-  };
-
+const UserInputs = ({ values, onChange }) => {
   return (
     <div id="user-input">
       <div className="input-group">
@@ -26,24 +16,28 @@ const UserInputs = () => {
           id="initialInvestment"
           title="Initial Investment"
           value={values.initialInvestment}
-          onChange={handleChange}
-          />
+          onChange={onChange}
+        />
         <UserInput
           id="anualInvestment"
           title="Anual Investment"
           value={values.anualInvestment}
-          onChange={handleChange}
-          />
+          onChange={onChange}
+        />
       </div>
       <div className="input-group">
         <UserInput
           id="expectedReturn"
           title="Expected Return"
           value={values.expectedReturn}
-          onChange={handleChange}
-          />
-        <UserInput id="duration" title="Duration" value={values.duration} onChange={handleChange}/>
-      
+          onChange={onChange}
+        />
+        <UserInput
+          id="duration"
+          title="Duration"
+          value={values.duration}
+          onChange={onChange}
+        />
       </div>
     </div>
   );
