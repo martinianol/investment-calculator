@@ -4,11 +4,13 @@ import Header from "./components/Header";
 import UserInputs from "./components/UserInputs";
 import Results from "./components/Results";
 
+import { calculateInvestmentResults, formatter } from "./util/investment";
+
 const INITIAL_VALUES = {
-  initialInvestment: 0,
-  anualInvestment: 0,
-  expectedReturn: 0,
-  duration: 0,
+  initialInvestment: 10000,
+  annualInvestment: 1200,
+  expectedReturn: 6,
+  duration: 10,
 };
 
 function App() {
@@ -16,17 +18,25 @@ function App() {
 
   const handleInputChange = (id, value) => {
     setInputValues((prevState) => {
-      const newValues = { ...prevState };
-      newValues[id] = value;
-      return newValues;
+      return {
+        ...prevState,
+        [id]: Number(value),
+      };
     });
   };
+
+  const annualData = calculateInvestmentResults(inputValues);
+  const inputIsValid = inputValues.duration > 0;
 
   return (
     <>
       <Header />
       <UserInputs onChange={handleInputChange} values={inputValues} />
-      <Results />
+      {inputIsValid ? (
+        <Results data={annualData} />
+      ) : (
+        <p className="center">Duration should be higher than 0</p>
+      )}
     </>
   );
 }

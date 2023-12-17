@@ -1,13 +1,14 @@
 const UserInput = ({ id, title, value, onChange }) => {
   return (
-    <div>
+    <p>
       <label>{title}</label>
       <input
         type="number"
         value={value}
         onChange={(e) => onChange(id, e.target.value)}
+        required
       />
-    </div>
+    </p>
   );
 };
 

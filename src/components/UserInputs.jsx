@@ -1,16 +1,8 @@
-import { useState } from "react";
 import UserInput from "./UserInput";
-
-const INITIAL_VALUES = {
-  initialInvestment: 0,
-  anualInvestment: 0,
-  expectedReturn: 0,
-  duration: 0,
-};
 
 const UserInputs = ({ values, onChange }) => {
   return (
-    <div id="user-input">
+    <section id="user-input">
       <div className="input-group">
         <UserInput
           id="initialInvestment"
@@ -19,9 +11,9 @@ const UserInputs = ({ values, onChange }) => {
           onChange={onChange}
         />
         <UserInput
-          id="anualInvestment"
+          id="annualInvestment"
           title="Anual Investment"
-          value={values.anualInvestment}
+          value={values.annualInvestment}
           onChange={onChange}
         />
       </div>
@@ -39,7 +31,7 @@ const UserInputs = ({ values, onChange }) => {
           onChange={onChange}
         />
       </div>
-    </div>
+    </section>
   );
 };
 
